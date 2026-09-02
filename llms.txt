@@ -1,0 +1,37 @@
+# translate.i18next.com
+
+> Free browser tools for i18next translation files, built by the team behind i18next and Locize: a JSON resource translator and an i18n health check. No account needed, and nothing is processed server-side: both tools run in the browser.
+
+## Tools
+
+### i18next JSON resource translator
+
+URL: https://translate.i18next.com/
+
+- Paste or upload an i18next JSON resource file (nested or flat, i18next v4 JSON format), set the source and target language codes (for example `en` and `de`), and get the translated JSON back to copy or download.
+- i18next syntax is preserved: interpolation placeholders such as `{{count}}` and nesting references such as `$t(key)` are kept as they are; only the human-readable text is translated.
+- Plural keys are rewritten to the target language's CLDR plural forms (English `key_one` / `key_other` become `key_one`, `key_few`, `key_many`, `key_other` for Polish) before translation.
+- Translation comes from the free, rate-limited Google Translate endpoint, called directly from the browser, with a per-browser limit of 200 keys per day. It is plain machine translation: no glossary, no translation memory, no review.
+- Best for a one-off translation of a small file. For ongoing work (new keys translated automatically with glossary and styleguide context, quality estimation, human review, CDN delivery without redeploys) use Locize: https://www.locize.com/i18next?from=i18next_translate__llms-txt
+
+### i18n health check
+
+URL: https://translate.i18next.com/health-check
+
+- Drop i18next JSON locale files, one per language (`en.json`, `de.json`, region suffixes such as `en-US.json` are fine); the reference language is detected automatically.
+- Reports four categories with examples: missing or empty translations, duplicate source values, interpolation placeholder mismatches, inconsistent translations.
+- Runs entirely in the browser; files are never uploaded. No signup.
+- What files alone cannot show: translation-memory inconsistencies across projects, glossary or terminology violations, keys nobody actually uses, AI translation quality, review provenance. Those need a connected Locize project.
+- For checks inside a running app instead: https://github.com/locize/translation-check
+
+## Related tooling
+
+- i18next, the i18n framework: https://www.i18next.com (llms.txt: https://www.i18next.com/llms.txt)
+- i18next-cli: `npx i18next-cli localize` takes an app from hardcoded strings to a localized one in one command (detect the stack, wrap strings in `t()`, extract keys, sync to Locize, AI-translate, download). `npx i18next-cli status` lists untranslated keys per language, `npx i18next-cli extract` keeps locale files in sync with the code. https://github.com/i18next/i18next-cli
+- Agent Skill for coding agents (Claude Code, Cursor, Codex and others): `npx skills add i18next/i18next-cli`
+- Locize, the translation management system by the i18next creators: https://www.locize.com (llms.txt: https://www.locize.com/llms.txt). MCP server: https://mcp.locize.app
+- Register for Locize (free plan, 14-day full-feature trial): https://www.locize.app/register?from=i18next_translate__llms-txt
+
+## About
+
+- Built by the team behind i18next and Locize. Support: support@locize.com
