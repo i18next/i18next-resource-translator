@@ -24,6 +24,16 @@ URL: https://translate.i18next.com/health-check
 - What files alone cannot show: translation-memory inconsistencies across projects, glossary or terminology violations, keys nobody actually uses, AI translation quality, review provenance. Those need a connected Locize project.
 - For checks inside a running app instead: https://github.com/locize/translation-check
 
+### i18n readiness check for a GitHub repository
+
+URL: https://translate.i18next.com/repo-check
+
+- Paste a public GitHub repository URL (or `owner/repo`); the page reads the file listing and up to 200 source files plus locale files straight from github.com.
+- Reports the framework (Next.js App Router or Pages Router, React with Vite, Vue, Svelte, Astro, Remix and others, plus a marker for apps built with Lovable or Bolt), the i18n library if any, locale files and languages, user-facing strings still hardcoded (file and line, the same rules as `npx i18next-cli lint`), untranslated keys per language and plural forms missing per language's CLDR rules.
+- Ends with the one command that takes the app from hardcoded strings to translated: `npx i18next-cli localize`.
+- Runs entirely in the browser; only api.github.com and raw.githubusercontent.com are contacted, nothing is stored. Public repositories only; private ones can run `npx i18next-cli lint` and `npx i18next-cli status` locally.
+- Share a report with `https://translate.i18next.com/repo-check?repo=owner/repo`.
+
 ## Related tooling
 
 - i18next, the i18n framework: https://www.i18next.com (llms.txt: https://www.i18next.com/llms.txt)
